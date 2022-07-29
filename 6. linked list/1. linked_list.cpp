@@ -10,12 +10,12 @@ class LinkedList{
 private:
     Node* head;
 public:
-    LinkedList(): head(NULL){};
+    LinkedList(): head(NULL){}
     ~LinkedList(){
         while(!empty()){
             pop_front();
         }
-    };
+    }
 
     void push_front(int val){
         Node* new_node = new Node {val, NULL};
