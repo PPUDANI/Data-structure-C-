@@ -10,7 +10,7 @@ private:
 
 public:
     //explicit란 명백한이라는 뜻으로 자신이 원하지 않은
-    //형변환이 일어나지 않도록 제한하는 키워드이다.
+    //묵시적 형변환이 일어나지 않도록 제한하는 키워드이다.
     //생성자함수에 형변환 방지를 위해 적은 것으로 생략가능
     explicit DynamicArray (int n) : sz(n){
         arr = new T[sz] {};

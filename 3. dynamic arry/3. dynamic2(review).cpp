@@ -11,10 +11,10 @@ public:
         arr  = new int[sz];
     }
     ~DynamicArray(){
-        cout << arr; 
         delete arr;
-        //arr = nullptr;
-        cout << "memory deleted! "<< arr << endl;
+        arr = nullptr;
+        cout << "memory deleted! "<< endl;
+        cout << arr << endl; 
     }
 
     unsigned int size(){return sz;}

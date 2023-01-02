@@ -10,12 +10,14 @@ int main(){
     // c언어의 정적 배열 스타일을 그대로 사용할 수 있다. 하지만 단점이 있다.
     // 1. 배열의 크기를 명시적으로 작성해야한다.
     // 2. c와 같이 정적배열은 스택 메모리를 사용하므로 1~2MB 이상 메모리를 차지하면 스택오버플로우가 발생함.
-    // 3. 정적 배열보다 가변크기를 더 자주 사용하여 array는 잘 사용안하고 동적 배열인 vector를 사용한다.
+    // 3. 'std::array'같은 정적 배열보다 가변크기를 더 자주 사용하여 C++은 std::array는 잘 사용하지 않고 
+    //   동적 배열인 vector를 사용한다.
 
     array<int ,5> arr = {10, 2, 30, 45, 32};
     int sum = 0;
 
-    for(int i = 0; i < arr.size(); i++){
+    for (int i = 0; i < arr.size(); i++)
+    {
         sum += arr[i];
     }
 
@@ -26,8 +28,10 @@ int main(){
     // array로 이차배열 생성
     array<array<int, 2>,3> arr1 = {1, 2, 3, 4, 5, 6};
 
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 2; j++){
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
             cout << arr1[i][j] << " " << endl;
         }
     }
