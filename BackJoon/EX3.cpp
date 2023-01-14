@@ -23,17 +23,17 @@ void square(vector<vector<char>> &res, int num, int y, int x, char c)
                 {
                     square(res, num/3, i, j, c);
                 }
+                
                 count++;
             }
-            
         }
     }
-
 }
 
 int main()
 {
-    int num = 27;
+    int num;
+    cin >> num;
     vector<vector<char>> res(num, vector<char>(num));
 
     square(res, num, 0, 0, '*');
