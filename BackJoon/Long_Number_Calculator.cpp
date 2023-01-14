@@ -60,8 +60,6 @@ string add ( string A, string B )
 {
     int Maxlen = A.length();
     int range = 18;
-    //만약 A가 20이면
-    //만약 B가 1이면 max
 
     if ( (Maxlen % range) != 0 )
     {
@@ -108,8 +106,6 @@ long long range_sub ( string A, string B, int front, int range )
     string sub_A = A.substr(front, range);
     string sub_B = B.substr(front, range);
 
-    cout << "sub_A: " << sub_A << endl;
-    cout << "sub_B: " << sub_B << endl;
     long long llA = stoll(sub_A);
     long long llB = stoll(sub_B);
 
@@ -122,46 +118,48 @@ string sub ( string A, string B )
     // 메인 함수에서 큰 쪽을 A에 둠
     int Maxlen = A.length();
     int range = 18;
+
     // Maxlen을 range의 배수로 바꿈
     if ( (Maxlen % range) != 0 )
     {
         Maxlen += range - (Maxlen % range);
     }
+
     // 0으로 Maxlen의 길이로 필터링해줌
     A = filltering(A, Maxlen);
     B = filltering(B, Maxlen);
-
-    cout << "A: " << A << endl;
-    cout << "B: " << B << "\n" << endl;
     vector <string> strres;
 
     for ( int i = 0; i < (Maxlen / range); i++ )
     {
         long long llres = range_sub(A, B, (range * i), range);
 
-        cout << i << ":     " << llres << endl;
-
         if ( llres < 0 )
         {
-            long long befres = stoll(strres[i-1]) - 1;
-            strres[i-1] = to_string(befres);
+            long long befllres = stoll(strres[i-1]) - 1;
+            string befstrres = to_string(befllres);
+
+            if ( ((befstrres.length() - 1) < range) )
+            {
+                befstrres = filltering(befstrres, range);
+            }
+
+            strres[i-1] = befstrres;
 
             long long tenpow = pow(10, range);
-
-            cout << i << ":     " << tenpow << endl;
-
             llres += tenpow;
         }
 
-        cout << i << ":     " << llres << endl;
-
         string str = to_string(llres);
-        if ( ((str.length() - 1) < range) && (i > 0))
+
+        if ( (i > 0) )
         {
-            str = filltering(str, range);
+            if ( ((str.length() - 1) < range) )
+            {
+                str = filltering(str, range);
+            }
         }
 
-        cout << i << ":     " << str << "\n" << endl;
         strres.push_back(str);
 
     }
@@ -170,19 +168,25 @@ string sub ( string A, string B )
 
     for ( string i : strres )
     {
-        cout << "res: " << res << endl;
         res += i;
     }
     
+    while ( res[0] == '0' )
+    {
+        res.erase(0, 1);
+    }
+
     return res;
 }
 
 int main()
 {
     //18자리수인데 공백 '\0' 포함이 됨.
-    string A = "-1245123422312356234234124146384524124124634636346363463124241242";
-    string B = "123124124151232124412416346436176976974536251212412566856863421";
+    string A;
+    string B;
     string res = "";
+
+    cin >> A >> B;
 
     bool Is_A_Nega = IsNumNegative(A);
     bool Is_B_Nega = IsNumNegative(B);
@@ -272,5 +276,5 @@ int main()
         }
     }
 
-    cout << "\n <res> \n" << res << endl;
+    cout << res << endl;
 }
