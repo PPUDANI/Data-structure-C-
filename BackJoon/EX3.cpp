@@ -2,43 +2,49 @@
 #include <vector>
 using namespace std;
 
-vector<vector<char>> res;
-char square(int num)
+void square(vector<vector<char>> &res, int num, int y, int x, char c)
 {
-    for ( int i = 0; i < num; i++ )
+    if(num == 1)
     {
-        res[num].push_back('0');
+        res[y][x] = c;
     }
+    else
+    {
+        int count = 0;
+        for ( int i = y; i < y + num; i += num/3 )
+        {
+            for ( int j = x; j < x + num; j += num/3 )
+            {
+                if ( count == 4 )
+                {
+                    square(res, num/3, i, j, ' ');
+                }
+                else
+                {
+                    square(res, num/3, i, j, c);
+                }
+                count++;
+            }
+            
+        }
+    }
+
 }
+
 int main()
 {
-    int num = 1;
+    int num = 27;
+    vector<vector<char>> res(num, vector<char>(num));
 
-    vector<char> v1;
-    vector<char> v2;
-    v1.push_back('a');
-    v1.push_back('b');
-    v1.push_back('c');
-    v2.push_back('d');
-    v2.push_back('e');
-    v2.push_back('f');
-    res.push_back(v1);
-    res.push_back(v2);
-    square(num);
+    square(res, num, 0, 0, '*');
 
-    cout << "'0' capacity: " << res[0].capacity() << endl;
-    cout << "0: ";
-    for(char i : res[0])
+    //res 출력
+    for(int j = 0; j < num; j++)
     {
-        cout << i << " ";
+        for(char i : res[j])
+        {
+            cout << i;
+        }
+        cout << endl;
     }
-    cout << "\n\n'1' capacity: " << res[1].capacity() << endl;
-    cout << "1: ";
-    for(char i : res[1])
-    {
-        cout << i << " ";
-    }
-
-    
-
 }
