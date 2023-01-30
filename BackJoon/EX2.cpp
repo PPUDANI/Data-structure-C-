@@ -43,7 +43,7 @@ string add ( string A, string B )
     int Maxlen = A.length();
     int carry = 0;
 
-    A = filltering(A, Maxlen);
+    A = ReverseStr(A);
     B = filltering(B, Maxlen);
 
     for ( int i = 0; i < Maxlen; i++ )
@@ -86,7 +86,7 @@ string sub ( string A, string B )
     int Maxlen = A.length();
     int carry = 0;
 
-    A = filltering(A, Maxlen);
+    A = ReverseStr(A);
     B = filltering(B, Maxlen);
 
     for ( int i = 0; i < Maxlen; i++ )
