@@ -3,6 +3,7 @@
 using namespace std;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 int main()
 {
     int num = 12;
@@ -29,6 +30,8 @@ int main()
     }
 }
 =======
+=======
+>>>>>>> 90d5c9c37a2a05a4f03e15935e03bf9aa170928a
 void square(vector<vector<string>> &res, int num, int y, int x, string c)
 {
     if(num == 1)
@@ -77,5 +80,9 @@ int main()
         cout << endl;
         
     }
+<<<<<<< HEAD
+}
+>>>>>>> 90d5c9c37a2a05a4f03e15935e03bf9aa170928a
+=======
 }
 >>>>>>> 90d5c9c37a2a05a4f03e15935e03bf9aa170928a
